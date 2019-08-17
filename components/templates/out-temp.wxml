@@ -1,0 +1,16 @@
+<!-- 可定义多种模板 -->
+<!-- 用法：在需要用到的文件中引入 ，使用 name 属性确认用哪一个模板 -->
+
+<template name="temp1">
+    <view>
+        <view>{{staffA.firstName}}</view>
+        <view>{{tempName}}</view>
+    </view>
+</template>
+
+<template name="temp2">
+    <view>
+        <view>{{data.name}}</view>
+        <view>{{xx}}</view>
+    </view>
+</template>

@@ -1,0 +1,13 @@
+<!--components/first/first.wxml-->
+<view class="inner" >
+  	<view>{{desc}}</view>
+
+	<view>
+		key:{{pageInfo.key}};
+		value:{{pageInfo.value}}
+	</view>
+
+	<view>{{selfData.text}}</view>
+	<button bindtap="emitEven">点我触发父组件</button>
+</view>
+<slot></slot>

@@ -1,0 +1,22 @@
+/* pages/test/test.wxss */
+.test{
+  padding: 40rpx;
+  font-size: 24rpx;
+}
+
+button{
+	margin-bottom: 30rpx;
+	margin-top: 30rpx;
+}
+.container{
+	border:2rpx solid #007acc;
+	border-radius: 8rpx;
+	margin-top: 14rpx;
+}
+
+.content{
+	min-height: 100rpx;
+	width: 85%;
+	overflow: auto;
+	padding: 10rpx;
+}

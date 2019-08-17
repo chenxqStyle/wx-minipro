@@ -1,0 +1,61 @@
+<!--pages/test/test.wxml-->
+<import src="../../components/templates/out-temp.wxml" xmlns="http://www.w3.org/1999/html"/>
+<wxs src="../../utils/filter.wxs" module="tools" />
+<view class="test">
+
+    <view>{{time}}</view>
+
+    <view class="container">
+
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取用户信息（手机）</button>
+        <view class="content">{{userInfo}}</view>
+
+        <button bindtap="getPos">获取地理位置</button>
+        <view class="content">{{position}}</view>
+
+        <button bindtap="getDevice">获取设备信息</button>
+        <view class="content">{{info}}</view>
+
+    </view>
+
+    <view class="container">
+      <view>自定义组件</view>
+      <first-com pageInfo="{{pageInfoPar}}" desc="{{descPar}}" bind:parEvent="testEvent">
+          <text> solt 插槽数据 </text>
+      </first-com>
+    </view>
+    
+    <view class="container">
+      <view>模块化(引入模块中js)</view>
+      <view>
+          <button bindtap="sayHello">sayHello</button>
+          <button bindtap="sayGoodBye">sayGoodBye</button>
+      </view>
+    </view>
+
+    <view class="container">
+      <view> ---- 列表渲染 ---- </view>
+      <view wx:for="{{numArr}}" wx:key="index">{{item+" 是 ："+tools.filetr1(item)}}</view>
+    </view>
+    <view class="container">
+      <view> ---- 条件渲染 ---- </view>
+      <view wx:if="{{view == 'WEBVIEW'}}"> WEBVIEW </view>
+      <view wx:elif="{{view == 'APP'}}"> APP </view>
+      <view wx:else="{{view == 'MINA'}}"> MINA </view>
+    </view>
+    <view class="container">
+      <view> ---- 模板语法(内嵌) ---- </view>
+      <template is="staffName" data="{{...staffA}}"></template>
+      <template is="staffName" data="{{...staffB}}"></template>
+      <template is="staffName" data="{{...staffC}}"></template>
+     
+      <view> ---- 模板语法(引入) ---- </view>
+      <template is="temp1" data="{{tempName,staffA}}" />
+    </view>
+
+    <template name="staffName">
+      <view>
+          FirstName: {{firstName}}, LastName: {{lastName}}
+      </view>
+    </template>
+</view>

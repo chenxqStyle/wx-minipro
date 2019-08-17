@@ -1,0 +1,23 @@
+/**
+ * 每一个 .wxs 文件和 <wxs> 标签都是一个单独的模块。
+ * 每个模块都有自己独立的作用域。即在一个模块里面定义的变量与函数，默认为私有的，对其他模块不可见。
+ * 一个模块要想对外暴露其内部的私有变量与函数，只能通过 module.exports 实现。
+ * 在.wxs模块中引用其他 wxs 文件模块，可以使用 require 函数。 绝对路径 单例 不引用不解析
+ * 按照官方文档 数据操作参照 es5
+ */
+
+var foo = "'hello world' from comm.wxs";
+var bar = function(d) {
+  return d;
+}
+
+
+var filetr1 = function(d){
+	return d>0?"正数":d<0?"负数":Number(d)
+}
+
+module.exports = {
+  foo: foo,
+  bar: bar,
+  filetr1:filetr1
+};

@@ -1,0 +1,4 @@
+/* components/first/first.wxss */
+.inner {
+  border:2rpx solid #007acc;
+}
