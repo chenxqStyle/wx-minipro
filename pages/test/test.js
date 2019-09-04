@@ -6,10 +6,10 @@ import {
 
 const url = require("../../config/api")
 
-import {formatDate} from "../../utils/util.js"
+import { formatTime} from "../../utils/util.js"
 
 const app = getApp()
-
+const gbd = {}
 Page({
   data: {
     info: '',
@@ -42,6 +42,7 @@ Page({
     app.globalData.hh = 1
     console.log('app', app)
     console.log('获取api',url)
+    gbd.name = '张三丰'
   },
 
   /**
@@ -49,6 +50,16 @@ Page({
    */
   onShow() {
     console.log('生命周期函数--监听页面显示')
+
+    // 由于setData会影响性能 所以组件内不涉及数据渲染的，可以考虑全局变量共享
+    console.log('测试方法内数据共享：', gbd.name)
+    // 测试 hideLoading 会隐藏toast
+    wx.showToast({title:'ceshi',duration:10000})
+    setTimeout(function(){
+      wx.hideLoading()
+      wx.showToast({title:'ceshiooooooooooooooooooo',duration:10000})
+    },1000)
+
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -56,7 +67,7 @@ Page({
   onHide() {
     console.log('生命周期函数--监听页面隐藏')
     this.setData({
-      time:formatDate(new Date())
+      time: formatTime(new Date())
     })
   },
   /**
@@ -81,7 +92,10 @@ Page({
       const res = wx.getSystemInfoSync()
       console.log('res', res)
       this.setData({
-        info: JSON.stringify(res)
+        info: JSON.stringify({
+          model:res.model,
+          brand:res.brand
+        })
       })
     } catch (e) {
       console.log('获取设备信息出错：', e)

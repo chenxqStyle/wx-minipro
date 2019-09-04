@@ -10,6 +10,27 @@ Component({
       value:{}
     }
   },
+  lifetimes: {
+    attached: function () {
+      // 在组件实例进入页面节点树时执行
+      console.log('在组件实例进入页面节点树时执行 - attached')
+    },
+    detached: function () {
+      // 在组件实例被从页面节点树移除时执行
+      console.log('在组件实例被从页面节点树移除时执行 - detached')
+    },
+  },
+
+  pageLifetimes:{
+    show() {
+      console.log('自定义组件 - show')
+    },
+    hide() {
+      console.log('自定义组件 - hide')
+    },
+  },
+
+
   data: {
     // 这里是一些组件内部数据
     selfData: {
